@@ -1,0 +1,125 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/space-grotesk';
+
+@theme {
+    --font-body: 'Geist Variable', sans-serif;
+    --font-heading: 'Space Grotesk Variable', sans-serif;
+
+    /* backgrounds — use in order from outermost to innermost */
+    --color-surface:        #f0f2f5; /* page background, outermost layer */
+    --color-surface-raised: #ffffff; /* cards, modals, dropdowns */
+    --color-surface-subtle: #f8f9fb; /* sections inside cards, table rows, hover bg */
+
+    /* text — use in order from most to least important */
+    --color-ink:            #0f172a; /* headings, primary content, labels */
+    --color-ink-muted:      #64748b; /* subtitles, descriptions, secondary info */
+    --color-ink-faint:      #cbd5e1; /* placeholders, disabled text, hints */
+
+    /* borders */
+    --color-stroke:         #e2e8f0; /* default input borders, dividers, card borders */
+    --color-stroke-strong:  #cbd5e1; /* focused inputs, emphasized dividers */
+
+    /* accent — brand color, use sparingly */
+    --color-accent:         #3b82f6; /* primary buttons, links, active states, focus rings */
+    --color-accent-hover:   #2563eb; /* hover state on accent elements only */
+
+    /* feedback — use only for status communication */
+    --color-success:        #22c55e; /* success messages, completed states */
+    --color-warning:        #f59e0b; /* warnings, pending states */
+    --color-danger:         #ef4444; /* errors, destructive actions, validation fails */
+
+    /* shadows */
+    --color-shadow:         rgba(15, 23, 42, 0.08); /* subtle shadows on light backgrounds */
+    --color-shadow-strong:  rgba(15, 23, 42, 0.15); /* stronger shadows for elevation */
+
+
+    /* type scale */
+    --text-xs:   0.75rem;   /* 12px — timestamps, fine print */
+    --text-sm:   0.875rem;  /* 14px — labels, badges, helper text */
+    --text-base: 1rem;      /* 16px — body, inputs, paragraphs */
+    --text-lg:   1.25rem;   /* 20px — lead text, card subtitles */
+    --text-xl:   1.5rem;    /* 24px — h4, small section headings */
+    --text-2xl:  2rem;      /* 32px — h3, page subheadings */
+    --text-3xl:  2.5rem;    /* 40px — h2, feature headings */
+    --text-4xl:  3.5rem;    /* 56px — h1, hero headings */
+
+    /* line height — paired with sizes */
+    --leading-tight:  1.2;  /* headings — tight and punchy */
+    --leading-snug:   1.4;  /* subheadings */
+    --leading-normal: 1.6;  /* body text — comfortable reading */
+    --leading-loose:  1.8;  /* long form content */
+
+    /* font weight */
+    --font-normal:  400;    /* body, descriptions */
+    --font-medium:  500;    /* labels, nav items, subheadings */
+    --font-bold:    700;    /* headings, CTAs, emphasis */
+
+    /*
+         * Shadow geometry — size and shape only.
+         * Color is injected via --shadow-color, defined per theme below.
+         * Never hardcode rgba() here.
+         */
+        --shadow-xs: 0 1px 2px 0 var(--shadow-color-soft);
+        --shadow-sm: 0 1px 3px 0 var(--shadow-color-soft),
+                     0 1px 2px 0 var(--shadow-color-softer);
+        --shadow-md: 0 4px 6px -1px var(--shadow-color-soft),
+                     0 2px 4px -1px var(--shadow-color-softer);
+        --shadow-lg: 0 10px 15px -3px var(--shadow-color-soft),
+                     0 4px 6px -2px var(--shadow-color-softer);
+        --shadow-xl: 0 20px 25px -5px var(--shadow-color-soft),
+                     0 10px 10px -5px var(--shadow-color-softer);
+}
+
+@layer base {
+    :root {
+    --color-surface:        #f0f2f5;   /* page bg — slightly blue-tinted gray */
+    --color-surface-raised: #ffffff;   /* cards — pure white so they pop */
+    --color-surface-subtle: #f8f9fb;   /* subtle sections inside cards */
+
+    --color-ink:            #0f172a;   /* darker, richer than #111 */
+    --color-ink-muted:      #64748b;
+    --color-ink-faint:      #cbd5e1;
+
+    --color-stroke:         #e2e8f0;
+    --color-stroke-strong:  #cbd5e1;
+
+    --color-accent:         #3b82f6;
+    --color-accent-hover:   #2563eb;
+
+    /* Shadow color tokens — light mode */
+    --shadow-color-soft:   rgba(15, 23, 42, 0.08);
+    --shadow-color-softer: rgba(15, 23, 42, 0.06);
+    }
+
+    .dark {
+        --color-surface:        #0f0f0f;
+        --color-surface-raised: #1a1a1a;
+        --color-surface-subtle: #222222;
+
+        --color-ink:            #f3f4f6;
+        --color-ink-muted:      #6b7280;
+        --color-ink-faint:      #374151;
+
+        --color-stroke:         #2a2a2a;
+        --color-stroke-strong:  #3f3f3f;
+
+        --color-accent:         #3b82f6;
+        --color-accent-hover:   #2563eb;
+
+        /* Shadow color tokens — dark mode */
+        --shadow-color-soft:   rgba(0, 0, 0, 0.35);
+        --shadow-color-softer: rgba(0, 0, 0, 0.20);
+
+    }
+}
+
+body {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    @apply font-body;
+}
+
+h1, h2, h3, h4 {
+    @apply font-heading;
+}
