@@ -8,10 +8,10 @@ export const actions = {
     const password = form.get('password') as string;
 
     if (!email || !password) {
-      return fail(400, { message: 'All fields required', email });
+      return fail(400, { message: 'All fields required' });
     }
 
-    const res = await fetch('/api/auth/login', {  // note leading slash
+    const res = await fetch('/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -20,9 +20,9 @@ export const actions = {
     const data = await res.json();
 
     if (!res.ok) {
-      return fail(res.status, { message: data.message, email }); // return email so input retains value
+      return fail(res.status, { error: data.message, email }); // return email so input retains value
     }
 
-    redirect(303, "/")
+    return data
   },
 };
