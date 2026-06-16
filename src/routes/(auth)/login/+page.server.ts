@@ -1,7 +1,8 @@
 
 import { fail, redirect } from '@sveltejs/kit';
+import type { Action } from './$types';
 
-export const actions = {
+export const actions: Record<string, Action> = {
   default: async ({ request, fetch }) => {
     const form = await request.formData();
     const email = form.get('email') as string;
@@ -23,6 +24,6 @@ export const actions = {
       return fail(res.status, { error: data.message, email }); // return email so input retains value
     }
 
-    return data
+    redirect(302, '/');
   },
 };
